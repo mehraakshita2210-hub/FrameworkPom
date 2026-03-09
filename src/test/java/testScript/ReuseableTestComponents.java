@@ -1,0 +1,42 @@
+package testScript;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import pageObjects.LoginPageObject;
+
+public class ReuseableTestComponents {
+
+	WebDriver driver;
+	
+	public WebDriver initializeDriver() throws IOException 
+	{
+		Properties prop = new Properties();
+		FileInputStream fis = new FileInputStream("D:\\MagicEdtechAutomation\\FrameworkPom\\src\\main\\java\\resources\\global_data.properties");
+		prop.load(fis);
+		String browserName = prop.getProperty("browser");
+		
+		if(browserName.equalsIgnoreCase("chrome")) 
+		{
+			driver = new ChromeDriver();
+		}
+		
+	return driver;
+		
+	}
+	
+	public void launchAndLogin() throws IOException 
+	{
+		driver = initializeDriver();
+		LoginPageObject lpo = new LoginPageObject(driver);
+		lpo.launchfb();
+		lpo.doLogin("Hello@gmail.com","Pass@1234");
+		
+	}
+	
+	
+}
