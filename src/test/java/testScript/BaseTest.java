@@ -1,20 +1,24 @@
 package testScript;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import pageObjects.LoginPageObject;
 
 public class BaseTest {
 
-	public static void main(String[] args) 
+	@Test
+	public void tc001() 
 	{
 		
-		ChromeDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://www.facebook.com/");
+		WebDriver driver = new ChromeDriver();
+		LoginPageObject lp = new LoginPageObject(driver);
 		
-		driver.findElement(By.id("email")).sendKeys("abcd1234@gmail.com");
-		driver.findElement(By.id("pass")).sendKeys("Pass@123");
-		driver.findElement(By.name("login")).click();
+		lp.launchfb();
+		lp.doLogin("Hello@gmail.com","Pass@1234");
+		
+		
 	}
 
 }
