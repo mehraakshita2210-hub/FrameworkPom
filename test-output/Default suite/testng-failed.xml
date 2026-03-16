@@ -5,7 +5,7 @@
     <classes>
       <class name="testScript.BaseTest">
         <methods>
-          <include name="tc001"/>
+          <include name="tc002"/>
         </methods>
       </class> <!-- testScript.BaseTest -->
     </classes>
