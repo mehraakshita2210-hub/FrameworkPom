@@ -29,12 +29,12 @@ public class ReuseableTestComponents {
 		
 	}
 	
-	public void launchAndLogin() throws IOException 
+	public void launchAndLogin(String us, String ps) throws IOException 
 	{
 		driver = initializeDriver();
 		LoginPageObject lpo = new LoginPageObject(driver);
 		lpo.launchfb();
-		lpo.doLogin("Hello@gmail.com","Pass@1234");
+		lpo.doLogin(us,ps);
 		
 	}
 	

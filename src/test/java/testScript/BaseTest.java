@@ -1,22 +1,22 @@
 package testScript;
-
 import java.io.IOException;
-
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import utilityPackage.ExcelUtility;
+import utilityPackage.ScreenshotUtility;
 
 
 public class BaseTest extends ReuseableTestComponents {
 
-	@Test(enabled = false)
-	public void tc001() throws IOException 
+	@Test(dataProvider = "excelData")
+	public void tc001(String username, String password) throws IOException 
 	{
-		launchAndLogin();
+		launchAndLogin(username, password);
+		ScreenshotUtility su = new ScreenshotUtility(driver);
+		su.takeScreenshot();
 	}
 	
-	@Test(dataProvider = "excelData")
+	@Test(enabled = false)
 	public void tc002(String username, String password) 
 	{
 		System.out.println(username + " " + password);
@@ -25,7 +25,7 @@ public class BaseTest extends ReuseableTestComponents {
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException
 	{
-		String filepath = "C:\\Users\\Akshita Mehra\\OneDrive\\Desktop\\excelnew\\myexcel.xlsx";
+		String filepath = "D:\\MagicEdtechAutomation\\FrameworkPom\\ExcelFile\\myexcel.xlsx";
 		String sheetname = "mysheet";
 		return ExcelUtility.readExcelData(filepath, sheetname);
 	}
