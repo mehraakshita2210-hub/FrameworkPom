@@ -15,11 +15,6 @@ public class LoginPageObject {
 		}
 
 
-		public LoginPageObject() {
-			// TODO Auto-generated constructor stub
-		}
-
-
 		public void launchfb() 
 		{
 			
@@ -27,7 +22,7 @@ public class LoginPageObject {
 		}
 		
 		
-		public void doLogin(String un, String pw ) 
+		public void doLogin(String un, String pw) 
 		{
 			
 		WebElement email = driver.findElement(By.cssSelector("input[name='email']"));
@@ -39,9 +34,6 @@ public class LoginPageObject {
 		lgbutton.click();
 			
 		}
-		
-		
-		
 
 
 }
